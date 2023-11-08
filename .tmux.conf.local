@@ -246,6 +246,7 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 #     - #{prefix}
 #     - #{root}
 #     - #{synchronized}
+#     - #{sysinfo}
 #     - #{uptime_y}
 #     - #{uptime_d} (modulo 365 when #{uptime_y} is used)
 #     - #{uptime_h}
