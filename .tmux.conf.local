@@ -356,17 +356,17 @@ tmux_conf_theme_clock_style="24"
 #   - disabled
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel, xclip or wl-copy
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
 
 # increase history size
-#set -g history-limit 10000
+set -g history-limit 20000
 
 # start with mouse mode enabled
-#set -g mouse on
+set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
@@ -381,7 +381,7 @@ tmux_conf_copy_to_os_clipboard=false
 # bind C-a send-prefix
 
 # if you don't want Oh my tmux! to alter a binding, use #!important
-# bind c new-window -c '#{pane_current_path}' #!important
+bind c new-window -c '#{pane_current_path}' #!important
 
 # move status line to top
 #set -g status-position top
@@ -427,6 +427,41 @@ tmux_conf_uninstall_plugins_on_reload=true
 #set -g @plugin 'tmux-plugins/tmux-resurrect'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
+
+# Update $DISPLAY variables when reattaching to a session.
+# Source: https://github.com/lljbash/tmux-update-display
+set -g @plugin 'lljbash/tmux-update-display'
+
+# Add Mighty Scroll mouse support.
+# NOTE: needs mouse support `set -g mouse on`!
+# Source: https://github.com/noscript/tmux-mighty-scroll
+set -g @plugin 'noscript/tmux-mighty-scroll'
+set -g @mighty-scroll-fallback-mode 'by-line'
+
+# Open files with system default opener.
+# Source: https://github.com/tmux-plugins/tmux-open
+set -g @plugin 'tmux-plugins/tmux-open'
+
+# Add extracto fuzzy copier!
+# Source: https://github.com/laktak/extrakto
+set -g @plugin 'laktak/extrakto'
+
+# Better Window Names for tmux.
+# Must be loaded before tmux-resurrect!
+# NOTE: needs `python3 -m pip install --user libtmux`!
+# Source: https://github.com/ofirgall/tmux-window-name
+set -g @plugin 'ofirgall/tmux-window-name'
+
+# Restore tmux environment after system restart with
+# tmux-resurrect.
+# Source: https://github.com/tmux-plugins/tmux-resurrect
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @continuum-restore 'on'
+
+# More plugins:
+# https://github.com/tmux-plugins/list
 
 
 # -- custom variables ----------------------------------------------------------
